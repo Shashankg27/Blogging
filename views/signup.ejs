@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>signup</title>
+</head>
+<body>
+    
+    <%- include('./partials/nav') %>
+
+    <div style="display: flex; height: 90vh; align-items: center; justify-content: center;">
+      <div class="border" style="min-width: 400px;">
+        <form class="m-3" method="post" action="/user/signup" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="profileImg" class="form-label">Profile Image</label>
+              <input type="file" class="form-control" id="profileImg" name="profileImg" aria-describedby="profileImg">
+            </div>
+            <div class="mb-3">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" aria-describedby="firstname">
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" aria-describedby="lastname">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" name="email" aria-describedby="email">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" aria-describedby="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+    </div>
+    
+    <%- include('./partials/script') %>
+  </body>
+</html>

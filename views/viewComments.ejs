@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head") %>
+    <title>My Comments</title>
+</head>
+<body>
+    <%- include("./partials/nav") %>
+    
+    <div class="flex m-4">
+        <% comments.forEach(comment => { %>
+            <div class="container border rounded m-3">
+                <div class="d-flex">
+                    <div class="flex">
+                        <h3><%= comment.blogId.title %></h3>
+                        <pre><%= comment.content %></pre>
+                        <pre>Created At: <%= (new Date(comment.createdAt).toLocaleString()) %></pre> 
+                    </div>
+                    <div class="flex ms-auto">
+                        <form class="mt-3" action="/blog/<%= comment.blogId._id %>" method="get">
+                            <button type="submit" class="btn btn-info">Go to blog</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+    <%- include("./partials/script") %>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Edit Comment</title>
+</head>
+<body>
+    
+    <%- include('./partials/nav') %>
+
+    <div class="m-4">
+        <form method="post" action="/user/comment/edit/<%= Comment._id %>">
+            <div class="mb-3">
+                <input placeholder="Comment" type="text" value="<%= Comment.content %>" class="form-control" id="content" name="content" aria-describedby="content">
+            </div>
+            <button type="submit" class="btn btn-primary">Edit comment</button>
+        </form>
+    </div>
+    
+    <%- include('./partials/script') %>
+  </body>
+</html>
