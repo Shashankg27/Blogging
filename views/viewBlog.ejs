@@ -51,14 +51,16 @@
                             <pre><%= comment.content %></pre>
                             <pre>Created At: <%= (new Date(comment.createdAt).toLocaleString()) %></pre>
                         </div>
-                        <div class="flex ms-auto">
-                            <form class="mt-2" action="/user/comment/<%= comment._id %>" method="post">
-                                <button type="submit" class="btn btn-info">Delete Comment</button>
-                            </form>
-                            <form class="mt-2" action="/user/comment/edit/<%= comment._id %>" method="get">
-                                <button type="submit" class="btn btn-info">Edit Comment</button>
-                            </form>
-                        </div>
+                        <% if (user && (user._id == comment.createdBy)) { %>
+                            <div class="flex ms-auto">
+                                <form class="mt-2" action="/user/comment/<%= comment._id %>" method="post">
+                                    <button type="submit" class="btn btn-info">Delete Comment</button>
+                                </form>
+                                <form class="mt-2" action="/user/comment/edit/<%= comment._id %>" method="get">
+                                    <button type="submit" class="btn btn-info">Edit Comment</button>
+                                </form>
+                            </div>
+                        <% } %>
                     </div>
                 <% }) %>
             </div>
