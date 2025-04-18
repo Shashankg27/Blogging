@@ -79,6 +79,21 @@ router.post('/edit/:id', upload.single('coverImg'), async (req, res) => {
     return res.redirect(`/blog/${req.params.id}`);
 })
 
+router.post('/like/:id', async (req, res) => {
+    await Blog.findByIdAndUpdate(req.params.id, {
+        $inc: { likes: 1 }
+    });
+
+    return res.redirect(`/blog/${req.params.id}`);
+})
+router.post('/dislike/:id', async (req, res) => {
+    await Blog.findByIdAndUpdate(req.params.id, {
+        $inc: { dislikes: 1 }
+    });
+
+    return res.redirect(`/blog/${req.params.id}`);
+})
+
 router.post('/addBlog', upload.single('coverImg'), handleAddBlog);
 
 router.post('/comment/:id', handleCreateComment)
