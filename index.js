@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
 app.use(express.static(path.resolve('./public')));
 
-mongoose.connect(process.env.MONGO_URL).then(() => console.log("Connected MongoDB"));
+mongoose.connect(process.env.MONGO_URL).then(() => console.log("Connected MongoDB:", process.env.MONGO_URL));
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
