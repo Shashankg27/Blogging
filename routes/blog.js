@@ -49,6 +49,14 @@ router.post('/delete/:id', async (req, res) => {
     return res.redirect('/');
 })
 
+router.post('/share/:id', (req, res) => {
+    navigator.clipboard.writeText(`https://blogging-app.up.railway.app/blog/${req.params.id}`).then(() => {
+        alert('Link copied to clipboard!');
+    });
+
+    return res.redirect(`/blog/${req.params.id}`);
+})
+
 router.get('/edit/:id', async (req, res) => {
     const blog = await Blog.findOne({ _id: req.params.id });
     return res.render('editBlog', {blog});

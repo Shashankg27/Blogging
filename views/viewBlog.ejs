@@ -19,18 +19,22 @@
             <pre>Created At: <%= (new Date(blog.createdAt).toLocaleString()) %></pre>
         </div>
 
+        
+        <div class="d-flex">
+            <div class="m-2">
+                <button onclick="copyToClipboard('<%= blog._id %>')" class="btn btn-info">Share</button>
+            </div>
         <% if (user) { %>
             <% if((user._id == blog.createdBy._id)) { %>
-                <div class="d-flex">
                     <form class="m-2" action="/blog/delete/<%= blog._id %>" method="post">
                         <button type="submit" class="btn btn-info">Delete Blog</button>
                     </form>
                     <form class="m-2" action="/blog/edit/<%= blog._id %>" method="get">
                         <button type="submit" class="btn btn-info">Edit Blog</button>
                     </form>
-                </div>
             <% } %>
         <% } %>
+        </div>
         
         <div class="m-2 mt-4">
             <h2>Comments(<%= comments.length %>):</h2>
@@ -68,5 +72,15 @@
     </div>
 
     <%- include('./partials/script') %>
+    <script>
+        function copyToClipboard(id) {
+          const url = `https://blogging-app.up.railway.app/blog/${id}`;
+          navigator.clipboard.writeText(url).then(() => {
+            alert('Link copied to clipboard!');
+          }).catch(err => {
+            console.error('Failed to copy: ', err);
+          });
+        }
+    </script>
 </body>
 </html>
